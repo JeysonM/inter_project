@@ -11,23 +11,8 @@ module Api
     end
 
     def ruby_versions
-      @apiRelease = 'https://api.github.com/repos/rails/rails/releases'
-      resp = HTTP.get(@apiRelease).body
-      releases = []
-      json_data = JSON.parse(resp)
-      json_data.each do |release|
-          value = { release:  release['name']}
-          releases << value
-      end
+      releases = RubyVersions.call
       render json: releases
-
-
-      apirRelease = ""
-      resp = Http.get(apirRelease).body
-      json_data = JSON.parse(resp)
-
-      
-
     end
 
     # GET /books/1
